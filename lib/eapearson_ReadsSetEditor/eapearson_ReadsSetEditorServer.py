@@ -45,8 +45,13 @@ def get_config():
 
 config = get_config()
 
+<<<<<<< HEAD:lib/eapearson_ReadsSetEditor/eapearson_ReadsSetEditorServer.py
 from eapearson_ReadsSetEditor.eapearson_ReadsSetEditorImpl import eapearson_ReadsSetEditor  # noqa @IgnorePep8
 impl_eapearson_ReadsSetEditor = eapearson_ReadsSetEditor(config)
+=======
+from ReadsSetEditor.ReadsSetEditorImpl import ReadsSetEditor  # noqa @IgnorePep8
+impl_ReadsSetEditor = ReadsSetEditor(config)
+>>>>>>> master:lib/ReadsSetEditor/ReadsSetEditorServer.py
 
 
 class JSONObjectEncoder(json.JSONEncoder):
@@ -318,7 +323,11 @@ class Application(object):
                                    context['method'], context['call_id'])
 
     def __init__(self):
+<<<<<<< HEAD:lib/eapearson_ReadsSetEditor/eapearson_ReadsSetEditorServer.py
         submod = get_service_name() or 'eapearson_ReadsSetEditor'
+=======
+        submod = get_service_name() or 'ReadsSetEditor'
+>>>>>>> master:lib/ReadsSetEditor/ReadsSetEditorServer.py
         self.userlog = log.log(
             submod, ip_address=True, authuser=True, module=True, method=True,
             call_id=True, changecallback=self.logcallback,
@@ -329,12 +338,25 @@ class Application(object):
         self.serverlog.set_log_level(6)
         self.rpc_service = JSONRPCServiceCustom()
         self.method_authentication = dict()
+<<<<<<< HEAD:lib/eapearson_ReadsSetEditor/eapearson_ReadsSetEditorServer.py
         self.rpc_service.add(impl_eapearson_ReadsSetEditor.save_read_set,
                              name='eapearson_ReadsSetEditor.save_read_set',
                              types=[dict])
         self.method_authentication['eapearson_ReadsSetEditor.save_read_set'] = 'required' # noqa
         self.rpc_service.add(impl_eapearson_ReadsSetEditor.status,
                              name='eapearson_ReadsSetEditor.status',
+=======
+        self.rpc_service.add(impl_ReadsSetEditor.save_read_set,
+                             name='ReadsSetEditor.save_read_set',
+                             types=[dict])
+        self.method_authentication['ReadsSetEditor.save_read_set'] = 'required' # noqa
+        self.rpc_service.add(impl_ReadsSetEditor.save_reads_set_v1,
+                             name='ReadsSetEditor.save_reads_set_v1',
+                             types=[])
+        self.method_authentication['ReadsSetEditor.save_reads_set_v1'] = 'required' # noqa
+        self.rpc_service.add(impl_ReadsSetEditor.status,
+                             name='ReadsSetEditor.status',
+>>>>>>> master:lib/ReadsSetEditor/ReadsSetEditorServer.py
                              types=[dict])
         authurl = config.get(AUTH) if config else None
         self.auth_client = _KBaseAuth(authurl)
@@ -389,7 +411,11 @@ class Application(object):
                             err = JSONServerError()
                             err.data = (
                                 'Authentication required for ' +
+<<<<<<< HEAD:lib/eapearson_ReadsSetEditor/eapearson_ReadsSetEditorServer.py
                                 'eapearson_ReadsSetEditor ' +
+=======
+                                'ReadsSetEditor ' +
+>>>>>>> master:lib/ReadsSetEditor/ReadsSetEditorServer.py
                                 'but no authentication header was passed')
                             raise err
                         elif token is None and auth_req == 'optional':
