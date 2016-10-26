@@ -1,7 +1,7 @@
-SERVICE = readsseteditor
-SERVICE_CAPS = ReadsSetEditor
-SPEC_FILE = ReadsSetEditor.spec
-URL = https://kbase.us/services/readsseteditor
+SERVICE = eapearson_readsseteditor
+SERVICE_CAPS = eapearson_ReadsSetEditor
+SPEC_FILE = eapearson_ReadsSetEditor.spec
+URL = https://kbase.us/services/eapearson_readsseteditor
 DIR = $(shell pwd)
 LIB_DIR = lib
 SCRIPTS_DIR = scripts

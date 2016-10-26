@@ -17,7 +17,7 @@ except:
     from baseclient import BaseClient as _BaseClient  # @Reimport
 
 
-class ReadSetEditor(object):
+class eapearson_ReadsSetEditor(object):
 
     def __init__(
             self, url=None, timeout=30 * 60, user_id=None,
@@ -44,9 +44,9 @@ class ReadSetEditor(object):
            parameter "report_name" of String, parameter "report_ref" of String
         """
         return self._client.call_method(
-            'ReadSetEditor.save_read_set',
+            'eapearson_ReadsSetEditor.save_read_set',
             [params], self._service_ver, context)
 
     def status(self, context=None):
-        return self._client.call_method('ReadSetEditor.status',
+        return self._client.call_method('eapearson_ReadsSetEditor.status',
                                         [], self._service_ver, context)

@@ -12,8 +12,8 @@ except:
 from pprint import pprint
 
 from biokbase.workspace.client import Workspace as workspaceService
-from ReadsSetEditor.ReadsSetEditorImpl import ReadsSetEditor
-from ReadsSetEditor.ReadsSetEditorServer import MethodContext
+from eapearson_ReadsSetEditor.eapearson_ReadsSetEditorImpl import eapearson_ReadsSetEditor
+from eapearson_ReadsSetEditor.eapearson_ReadsSetEditorServer import MethodContext
 
 
 class ReadsSetEditorTest(unittest.TestCase):
@@ -30,7 +30,7 @@ class ReadsSetEditorTest(unittest.TestCase):
         cls.ctx.update({'token': token,
                         'user_id': user_id,
                         'provenance': [
-                            {'service': 'ReadsSetEditor',
+                            {'service': 'eapearson_ReadsSetEditor',
                              'method': 'please_never_use_it_in_production',
                              'method_params': []
                              }],
@@ -39,11 +39,11 @@ class ReadsSetEditorTest(unittest.TestCase):
         cls.cfg = {}
         config = ConfigParser()
         config.read(config_file)
-        for nameval in config.items('ReadsSetEditor'):
+        for nameval in config.items('eapearson_ReadsSetEditor'):
             cls.cfg[nameval[0]] = nameval[1]
         cls.wsURL = cls.cfg['workspace-url']
         cls.wsClient = workspaceService(cls.wsURL, token=token)
-        cls.serviceImpl = ReadsSetEditor(cls.cfg)
+        cls.serviceImpl = eapearson_ReadsSetEditor(cls.cfg)
 
     @classmethod
     def tearDownClass(cls):
@@ -58,7 +58,7 @@ class ReadsSetEditorTest(unittest.TestCase):
         if hasattr(self.__class__, 'wsName'):
             return self.__class__.wsName
         suffix = int(time.time() * 1000)
-        wsName = "test_ReadsSetEditor_" + str(suffix)
+        wsName = "test_eapearson_ReadsSetEditor_" + str(suffix)
         ret = self.getWsClient().create_workspace({'workspace': wsName})
         self.__class__.wsName = wsName
         return wsName
